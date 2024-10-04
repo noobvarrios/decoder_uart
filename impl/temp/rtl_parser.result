@@ -10,7 +10,7 @@
    {
     "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
     "InstLine" : 6,
-    "InstName" : "d1",
+    "InstName" : "decoder",
     "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
     "ModuleLine" : 38,
     "ModuleName" : "decoder_select"

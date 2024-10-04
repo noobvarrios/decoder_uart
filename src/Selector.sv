@@ -3,7 +3,7 @@ module top(
     output logic tx3, tx4, tx5, tx6, rx2);
     logic [3:0]EN_UART; 
     //generar instancias 
-    decoder_select d1(s0,s1,EN_UART);
+    decoder_select decoder(s0,s1,EN_UART);
     mux_tri mux(rx3, rx4, rx5, rx6, EN_UART, rx2);
     demux_tri dem(tx2, EN_UART,tx3, tx4, tx5, tx6);
 
