@@ -1,0 +1,351 @@
+//
+//Written by GowinSynthesis
+//Product Version "GowinSynthesis V1.9.8.10"
+//Fri Oct 04 08:08:00 2024
+
+//Source file index table:
+//file0 "\C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv"
+`timescale 100 ps/100 ps
+module triState (
+  rx5_d,
+  rx6_d,
+  s1_d,
+  rx4_d,
+  rx3_d,
+  s0_d,
+  y_10
+)
+;
+input rx5_d;
+input rx6_d;
+input s1_d;
+input rx4_d;
+input rx3_d;
+input s0_d;
+output y_10;
+wire y_11;
+wire VCC;
+wire GND;
+  LUT4 y_s6 (
+    .F(y_10),
+    .I0(rx5_d),
+    .I1(rx6_d),
+    .I2(s1_d),
+    .I3(y_11) 
+);
+defparam y_s6.INIT=16'hCFA0;
+  LUT4 y_s7 (
+    .F(y_11),
+    .I0(rx4_d),
+    .I1(rx3_d),
+    .I2(s1_d),
+    .I3(s0_d) 
+);
+defparam y_s7.INIT=16'hFA0C;
+  VCC VCC_cZ (
+    .V(VCC)
+);
+  GND GND_cZ (
+    .G(GND)
+);
+endmodule /* triState */
+module mux_tri (
+  rx5_d,
+  rx6_d,
+  s1_d,
+  rx4_d,
+  rx3_d,
+  s0_d,
+  y_10
+)
+;
+input rx5_d;
+input rx6_d;
+input s1_d;
+input rx4_d;
+input rx3_d;
+input s0_d;
+output y_10;
+wire VCC;
+wire GND;
+  triState mux_t3 (
+    .rx5_d(rx5_d),
+    .rx6_d(rx6_d),
+    .s1_d(s1_d),
+    .rx4_d(rx4_d),
+    .rx3_d(rx3_d),
+    .s0_d(s0_d),
+    .y_10(y_10)
+);
+  VCC VCC_cZ (
+    .V(VCC)
+);
+  GND GND_cZ (
+    .G(GND)
+);
+endmodule /* mux_tri */
+module triState_0 (
+  s1_d,
+  s0_d,
+  y_5
+)
+;
+input s1_d;
+input s0_d;
+output y_5;
+wire VCC;
+wire GND;
+  LUT2 y_s2 (
+    .F(y_5),
+    .I0(s1_d),
+    .I1(s0_d) 
+);
+defparam y_s2.INIT=4'hE;
+  VCC VCC_cZ (
+    .V(VCC)
+);
+  GND GND_cZ (
+    .G(GND)
+);
+endmodule /* triState_0 */
+module triState_1 (
+  s1_d,
+  s0_d,
+  y_5
+)
+;
+input s1_d;
+input s0_d;
+output y_5;
+wire VCC;
+wire GND;
+  LUT2 y_s2 (
+    .F(y_5),
+    .I0(s1_d),
+    .I1(s0_d) 
+);
+defparam y_s2.INIT=4'hB;
+  VCC VCC_cZ (
+    .V(VCC)
+);
+  GND GND_cZ (
+    .G(GND)
+);
+endmodule /* triState_1 */
+module triState_2 (
+  s0_d,
+  s1_d,
+  y_5
+)
+;
+input s0_d;
+input s1_d;
+output y_5;
+wire VCC;
+wire GND;
+  LUT2 y_s2 (
+    .F(y_5),
+    .I0(s0_d),
+    .I1(s1_d) 
+);
+defparam y_s2.INIT=4'hB;
+  VCC VCC_cZ (
+    .V(VCC)
+);
+  GND GND_cZ (
+    .G(GND)
+);
+endmodule /* triState_2 */
+module triState_3 (
+  s1_d,
+  s0_d,
+  y_5
+)
+;
+input s1_d;
+input s0_d;
+output y_5;
+wire VCC;
+wire GND;
+  LUT2 y_s2 (
+    .F(y_5),
+    .I0(s1_d),
+    .I1(s0_d) 
+);
+defparam y_s2.INIT=4'h7;
+  VCC VCC_cZ (
+    .V(VCC)
+);
+  GND GND_cZ (
+    .G(GND)
+);
+endmodule /* triState_3 */
+module demux_tri (
+  s1_d,
+  s0_d,
+  y_5,
+  y_5_0,
+  y_5_1,
+  y_5_2
+)
+;
+input s1_d;
+input s0_d;
+output y_5;
+output y_5_0;
+output y_5_1;
+output y_5_2;
+wire VCC;
+wire GND;
+  triState_0 demux_t3 (
+    .s1_d(s1_d),
+    .s0_d(s0_d),
+    .y_5(y_5)
+);
+  triState_1 demux_t4 (
+    .s1_d(s1_d),
+    .s0_d(s0_d),
+    .y_5(y_5_0)
+);
+  triState_2 demux_t5 (
+    .s0_d(s0_d),
+    .s1_d(s1_d),
+    .y_5(y_5_1)
+);
+  triState_3 demux_t6 (
+    .s1_d(s1_d),
+    .s0_d(s0_d),
+    .y_5(y_5_2)
+);
+  VCC VCC_cZ (
+    .V(VCC)
+);
+  GND GND_cZ (
+    .G(GND)
+);
+endmodule /* demux_tri */
+module top (
+  clk,
+  reset,
+  s0,
+  s1,
+  rx3,
+  rx4,
+  rx5,
+  rx6,
+  tx2,
+  tx3,
+  tx4,
+  tx5,
+  tx6,
+  rx2
+)
+;
+input clk;
+input reset;
+input s0;
+input s1;
+input rx3;
+input rx4;
+input rx5;
+input rx6;
+input tx2;
+output tx3;
+output tx4;
+output tx5;
+output tx6;
+output rx2;
+wire s0_d;
+wire s1_d;
+wire rx3_d;
+wire rx4_d;
+wire rx5_d;
+wire rx6_d;
+wire tx2_d;
+wire y_10;
+wire y_5;
+wire y_5_3;
+wire y_5_4;
+wire y_5_5;
+wire VCC;
+wire GND;
+  IBUF s0_ibuf (
+    .O(s0_d),
+    .I(s0) 
+);
+  IBUF s1_ibuf (
+    .O(s1_d),
+    .I(s1) 
+);
+  IBUF rx3_ibuf (
+    .O(rx3_d),
+    .I(rx3) 
+);
+  IBUF rx4_ibuf (
+    .O(rx4_d),
+    .I(rx4) 
+);
+  IBUF rx5_ibuf (
+    .O(rx5_d),
+    .I(rx5) 
+);
+  IBUF rx6_ibuf (
+    .O(rx6_d),
+    .I(rx6) 
+);
+  IBUF tx2_ibuf (
+    .O(tx2_d),
+    .I(tx2) 
+);
+  TBUF tx3_s0 (
+    .O(tx3),
+    .I(tx2_d),
+    .OEN(y_5) 
+);
+  TBUF tx4_s0 (
+    .O(tx4),
+    .I(tx2_d),
+    .OEN(y_5_3) 
+);
+  TBUF tx5_s0 (
+    .O(tx5),
+    .I(tx2_d),
+    .OEN(y_5_4) 
+);
+  TBUF tx6_s0 (
+    .O(tx6),
+    .I(tx2_d),
+    .OEN(y_5_5) 
+);
+  TBUF rx2_s0 (
+    .O(rx2),
+    .I(y_10),
+    .OEN(GND) 
+);
+  mux_tri mux (
+    .rx5_d(rx5_d),
+    .rx6_d(rx6_d),
+    .s1_d(s1_d),
+    .rx4_d(rx4_d),
+    .rx3_d(rx3_d),
+    .s0_d(s0_d),
+    .y_10(y_10)
+);
+  demux_tri dem (
+    .s1_d(s1_d),
+    .s0_d(s0_d),
+    .y_5(y_5),
+    .y_5_0(y_5_3),
+    .y_5_1(y_5_4),
+    .y_5_2(y_5_5)
+);
+  VCC VCC_cZ (
+    .V(VCC)
+);
+  GND GND_cZ (
+    .G(GND)
+);
+  GSR GSR (
+    .GSRI(VCC) 
+);
+endmodule /* top */

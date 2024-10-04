@@ -1,0 +1,37 @@
+GowinSynthesis start
+Running parser ...
+Analyzing Verilog file 'C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv'
+Compiling module 'top'("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":1)
+Compiling module 'decoder_select'("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":38)
+WARN  (EX3682) : Variable 'rx2' might have multiple concurrent drivers("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":32)
+WARN  (EX3682) : Variable 'rx2' might have multiple concurrent drivers("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":33)
+WARN  (EX3682) : Variable 'rx2' might have multiple concurrent drivers("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":34)
+Compiling module 'mux_tri'("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":27)
+Compiling module 'triState'("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":12)
+Compiling module 'demux_tri'("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":16)
+NOTE  (EX0101) : Current top module is "top"
+[5%] Running netlist conversion ...
+WARN  (CV0016) : Input clk is unused("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":2)
+WARN  (CV0016) : Input reset is unused("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":2)
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+WARN  (NL0002) : The module "decoder_select" instantiated to "d1" is swept in optimizing("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":6)
+WARN  (NL0002) : The module "triState" instantiated to "mux_t4" is swept in optimizing("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":32)
+WARN  (NL0002) : The module "triState" instantiated to "mux_t5" is swept in optimizing("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":33)
+WARN  (NL0002) : The module "triState" instantiated to "mux_t6" is swept in optimizing("C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\Selector.sv":34)
+[95%] Generate netlist file "C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\impl\gwsynthesis\uart_smartfuelv1.vg" completed
+[100%] Generate report file "C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\impl\gwsynthesis\uart_smartfuelv1_syn.rpt.html" completed
+GowinSynthesis finish

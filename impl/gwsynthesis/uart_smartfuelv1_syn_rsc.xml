@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="top">
+    <SubModule name="mux">
+        <SubModule name="mux_t3" Lut="2"/>
+    </SubModule>
+    <SubModule name="dem">
+        <SubModule name="demux_t3" Lut="1"/>
+        <SubModule name="demux_t4" Lut="1"/>
+        <SubModule name="demux_t5" Lut="1"/>
+        <SubModule name="demux_t6" Lut="1"/>
+    </SubModule>
+</Module>
