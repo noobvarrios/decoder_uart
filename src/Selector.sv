@@ -1,11 +1,15 @@
 module top(
     input logic clk, reset, s0, s1, rx3, rx4, rx5, rx6, tx2, 
-    output logic tx3, tx4, tx5, tx6, rx2);
+    output logic tx3, tx4, tx5, tx6, rx2,
+    output logic [5:0]leds);
     logic [3:0]EN_UART; 
     //generar instancias 
     decoder_select decoder(s0,s1,EN_UART);
     mux_tri mux(rx3, rx4, rx5, rx6, EN_UART, rx2);
-    demux_tri dem(tx2, EN_UART,tx3, tx4, tx5, tx6);
+    demux dem(tx2, EN_UART,tx3, tx4, tx5, tx6);
+    leds salidas_led(s1, s0, leds); 
+
+    
 
 endmodule 
 
@@ -13,18 +17,20 @@ module triState(input logic a, select, output tri y);
     assign y = select ? a : 1'bz; 
 endmodule 
 
-module demux_tri(input logic tx2, 
-                 input logic [3:0]EN_UART, 
-                 output tri tx3, tx4, tx5, tx6); //
+module demux(input logic tx2, 
+             input logic [3:0]EN_UART, 
+             output logic tx3, tx4, tx5, tx6); //    
 
-    triState demux_t3(tx2, EN_UART[0],tx3);
-    triState demux_t4(tx2, EN_UART[1],tx4);
-    triState demux_t5(tx2, EN_UART[2],tx5);
-    triState demux_t6(tx2, EN_UART[3],tx6);
+    assign tx3 = EN_UART[0] ? tx2 : 1; 
+    assign tx4 = EN_UART[1] ? tx2 : 1; 
+    assign tx5 = EN_UART[2] ? tx2 : 1; 
+    assign tx6 = EN_UART[3] ? tx2 : 1; 
+
 
 endmodule
 
-module mux_tri(input tri rx3, rx4, rx5, rx6, 
+
+module mux_tri(input logic rx3, rx4, rx5, rx6, 
                input logic [3:0] EN_UART, 
                output logic rx2); 
 
@@ -49,12 +55,16 @@ module decoder_select(input logic s0, s1,
     end 
 endmodule
 
-/*
-module mux4_1(input logic a0, a1, a2, a3, s1, s2, s3, s4, output logic y); 
-    buff b1(a0,s0,y)
-    buff b2(a1,s1,y)
-    buff b3(a2,s2,y)
-    buff b4(a3,s3,y)
-endmodule   
-*/
+module leds (input logic s1, s0, 
+             output logic [5:0]leds); 
+    always_comb begin 
+        case({s1,s0})
+            2'b00: leds <=6'b011111;
+            2'b01: leds <=6'b111110; //leds con ceros 
+            2'b10: leds <=6'b111101;
+            2'b11: leds <=6'b011100;
+        endcase
+    end
+endmodule
+
 

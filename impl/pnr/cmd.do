@@ -1,0 +1,11 @@
+-d C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\impl\gwsynthesis\uart_smartfuelv1.vg
+-p GW1NR-9C-QFN88P-6
+-pn GW1NR-LV9QN88PC6/I5
+-cst C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\src\uart_smartfuelv1.cst
+-cfg C:\Users\Osadi\OneDrive\Documentos\SmartFuel\FPGA\UART1\uart_smartfuelv1\impl\pnr\device.cfg
+-bit
+-tr
+-ph
+-timing
+-cst_error
+-route_maxfan 23

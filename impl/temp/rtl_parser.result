@@ -9,95 +9,69 @@
   "SubInsts" : [
    {
     "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-    "InstLine" : 6,
+    "InstLine" : 7,
     "InstName" : "decoder",
     "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-    "ModuleLine" : 38,
+    "ModuleLine" : 44,
     "ModuleName" : "decoder_select"
    },
    {
     "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-    "InstLine" : 7,
+    "InstLine" : 8,
     "InstName" : "mux",
     "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-    "ModuleLine" : 27,
+    "ModuleLine" : 33,
     "ModuleName" : "mux_tri",
     "SubInsts" : [
      {
       "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "InstLine" : 31,
+      "InstLine" : 37,
       "InstName" : "mux_t3",
       "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "ModuleLine" : 12,
+      "ModuleLine" : 16,
       "ModuleName" : "triState"
      },
      {
       "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "InstLine" : 32,
+      "InstLine" : 38,
       "InstName" : "mux_t4",
       "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "ModuleLine" : 12,
+      "ModuleLine" : 16,
       "ModuleName" : "triState"
      },
      {
       "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "InstLine" : 33,
+      "InstLine" : 39,
       "InstName" : "mux_t5",
       "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "ModuleLine" : 12,
+      "ModuleLine" : 16,
       "ModuleName" : "triState"
      },
      {
       "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "InstLine" : 34,
+      "InstLine" : 40,
       "InstName" : "mux_t6",
       "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "ModuleLine" : 12,
+      "ModuleLine" : 16,
       "ModuleName" : "triState"
      }
     ]
    },
    {
     "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-    "InstLine" : 8,
+    "InstLine" : 9,
     "InstName" : "dem",
     "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-    "ModuleLine" : 16,
-    "ModuleName" : "demux_tri",
-    "SubInsts" : [
-     {
-      "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "InstLine" : 20,
-      "InstName" : "demux_t3",
-      "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "ModuleLine" : 12,
-      "ModuleName" : "triState"
-     },
-     {
-      "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "InstLine" : 21,
-      "InstName" : "demux_t4",
-      "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "ModuleLine" : 12,
-      "ModuleName" : "triState"
-     },
-     {
-      "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "InstLine" : 22,
-      "InstName" : "demux_t5",
-      "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "ModuleLine" : 12,
-      "ModuleName" : "triState"
-     },
-     {
-      "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "InstLine" : 23,
-      "InstName" : "demux_t6",
-      "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
-      "ModuleLine" : 12,
-      "ModuleName" : "triState"
-     }
-    ]
+    "ModuleLine" : 20,
+    "ModuleName" : "demux"
+   },
+   {
+    "InstFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
+    "InstLine" : 10,
+    "InstName" : "salidas_led",
+    "ModuleFile" : "C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv",
+    "ModuleLine" : 58,
+    "ModuleName" : "leds"
    }
   ]
  }

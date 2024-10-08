@@ -1,7 +1,7 @@
 //
 //Written by GowinSynthesis
 //Product Version "GowinSynthesis V1.9.8.10"
-//Fri Oct 04 08:28:01 2024
+//Mon Oct 07 16:55:17 2024
 
 //Source file index table:
 //file0 "\C:/Users/Osadi/OneDrive/Documentos/SmartFuel/FPGA/UART1/uart_smartfuelv1/src/Selector.sv"
@@ -9,19 +9,17 @@
 module triState (
   rx5_d,
   rx6_d,
-  s1_d,
   rx4_d,
   rx3_d,
-  s0_d,
+  leds_d_Z_Z,
   y_10
 )
 ;
 input rx5_d;
 input rx6_d;
-input s1_d;
 input rx4_d;
 input rx3_d;
-input s0_d;
+input [1:0] leds_d_Z_Z;
 output y_10;
 wire y_11;
 wire VCC;
@@ -30,7 +28,7 @@ wire GND;
     .F(y_10),
     .I0(rx5_d),
     .I1(rx6_d),
-    .I2(s1_d),
+    .I2(leds_d_Z_Z[1]),
     .I3(y_11) 
 );
 defparam y_s6.INIT=16'hCFA0;
@@ -38,8 +36,8 @@ defparam y_s6.INIT=16'hCFA0;
     .F(y_11),
     .I0(rx4_d),
     .I1(rx3_d),
-    .I2(s1_d),
-    .I3(s0_d) 
+    .I2(leds_d_Z_Z[1]),
+    .I3(leds_d_Z_Z[0]) 
 );
 defparam y_s7.INIT=16'hFA0C;
   VCC VCC_cZ (
@@ -52,29 +50,26 @@ endmodule /* triState */
 module mux_tri (
   rx5_d,
   rx6_d,
-  s1_d,
   rx4_d,
   rx3_d,
-  s0_d,
+  leds_d_Z_Z,
   y_10
 )
 ;
 input rx5_d;
 input rx6_d;
-input s1_d;
 input rx4_d;
 input rx3_d;
-input s0_d;
+input [1:0] leds_d_Z_Z;
 output y_10;
 wire VCC;
 wire GND;
   triState mux_t3 (
     .rx5_d(rx5_d),
     .rx6_d(rx6_d),
-    .s1_d(s1_d),
     .rx4_d(rx4_d),
     .rx3_d(rx3_d),
-    .s0_d(s0_d),
+    .leds_d_Z_Z(leds_d_Z_Z[1:0]),
     .y_10(y_10)
 );
   VCC VCC_cZ (
@@ -84,138 +79,84 @@ wire GND;
     .G(GND)
 );
 endmodule /* mux_tri */
-module triState_0 (
-  s1_d,
-  s0_d,
-  y_5
+module demux (
+  tx2_d,
+  leds_d_Z_Z,
+  tx6_d,
+  tx5_d,
+  tx4_d,
+  tx3_d
 )
 ;
-input s1_d;
-input s0_d;
-output y_5;
+input tx2_d;
+input [1:0] leds_d_Z_Z;
+output tx6_d;
+output tx5_d;
+output tx4_d;
+output tx3_d;
 wire VCC;
 wire GND;
-  LUT2 y_s2 (
-    .F(y_5),
-    .I0(s1_d),
-    .I1(s0_d) 
+  LUT3 tx6_d_s (
+    .F(tx6_d),
+    .I0(tx2_d),
+    .I1(leds_d_Z_Z[1]),
+    .I2(leds_d_Z_Z[0]) 
 );
-defparam y_s2.INIT=4'hE;
+defparam tx6_d_s.INIT=8'hBF;
+  LUT3 tx5_d_s (
+    .F(tx5_d),
+    .I0(leds_d_Z_Z[0]),
+    .I1(tx2_d),
+    .I2(leds_d_Z_Z[1]) 
+);
+defparam tx5_d_s.INIT=8'hEF;
+  LUT3 tx4_d_s (
+    .F(tx4_d),
+    .I0(leds_d_Z_Z[1]),
+    .I1(tx2_d),
+    .I2(leds_d_Z_Z[0]) 
+);
+defparam tx4_d_s.INIT=8'hEF;
+  LUT3 tx3_d_s (
+    .F(tx3_d),
+    .I0(leds_d_Z_Z[0]),
+    .I1(leds_d_Z_Z[1]),
+    .I2(tx2_d) 
+);
+defparam tx3_d_s.INIT=8'hFE;
   VCC VCC_cZ (
     .V(VCC)
 );
   GND GND_cZ (
     .G(GND)
 );
-endmodule /* triState_0 */
-module triState_1 (
-  s1_d,
-  s0_d,
-  y_5
+endmodule /* demux */
+module leds (
+  leds_d_Z_Z,
+  leds_d_0_5,
+  leds_d_1_5,
+  leds_d_5
 )
 ;
-input s1_d;
-input s0_d;
-output y_5;
+input [1:0] leds_d_Z_Z;
+output leds_d_0_5;
+output leds_d_1_5;
+output leds_d_5;
 wire VCC;
 wire GND;
-  LUT2 y_s2 (
-    .F(y_5),
-    .I0(s1_d),
-    .I1(s0_d) 
+  LUT2 leds_d_5_s (
+    .F(leds_d_5),
+    .I0(leds_d_Z_Z[0]),
+    .I1(leds_d_Z_Z[1]) 
 );
-defparam y_s2.INIT=4'hB;
-  VCC VCC_cZ (
-    .V(VCC)
+defparam leds_d_5_s.INIT=4'h6;
+  INV leds_d_1_s0 (
+    .O(leds_d_1_5),
+    .I(leds_d_Z_Z[1]) 
 );
-  GND GND_cZ (
-    .G(GND)
-);
-endmodule /* triState_1 */
-module triState_2 (
-  s0_d,
-  s1_d,
-  y_5
-)
-;
-input s0_d;
-input s1_d;
-output y_5;
-wire VCC;
-wire GND;
-  LUT2 y_s2 (
-    .F(y_5),
-    .I0(s0_d),
-    .I1(s1_d) 
-);
-defparam y_s2.INIT=4'hB;
-  VCC VCC_cZ (
-    .V(VCC)
-);
-  GND GND_cZ (
-    .G(GND)
-);
-endmodule /* triState_2 */
-module triState_3 (
-  s1_d,
-  s0_d,
-  y_5
-)
-;
-input s1_d;
-input s0_d;
-output y_5;
-wire VCC;
-wire GND;
-  LUT2 y_s2 (
-    .F(y_5),
-    .I0(s1_d),
-    .I1(s0_d) 
-);
-defparam y_s2.INIT=4'h7;
-  VCC VCC_cZ (
-    .V(VCC)
-);
-  GND GND_cZ (
-    .G(GND)
-);
-endmodule /* triState_3 */
-module demux_tri (
-  s1_d,
-  s0_d,
-  y_5,
-  y_5_0,
-  y_5_1,
-  y_5_2
-)
-;
-input s1_d;
-input s0_d;
-output y_5;
-output y_5_0;
-output y_5_1;
-output y_5_2;
-wire VCC;
-wire GND;
-  triState_0 demux_t3 (
-    .s1_d(s1_d),
-    .s0_d(s0_d),
-    .y_5(y_5)
-);
-  triState_1 demux_t4 (
-    .s1_d(s1_d),
-    .s0_d(s0_d),
-    .y_5(y_5_0)
-);
-  triState_2 demux_t5 (
-    .s0_d(s0_d),
-    .s1_d(s1_d),
-    .y_5(y_5_1)
-);
-  triState_3 demux_t6 (
-    .s1_d(s1_d),
-    .s0_d(s0_d),
-    .y_5(y_5_2)
+  INV leds_d_0_s0 (
+    .O(leds_d_0_5),
+    .I(leds_d_Z_Z[0]) 
 );
   VCC VCC_cZ (
     .V(VCC)
@@ -223,7 +164,7 @@ wire GND;
   GND GND_cZ (
     .G(GND)
 );
-endmodule /* demux_tri */
+endmodule /* leds */
 module top (
   clk,
   reset,
@@ -238,7 +179,8 @@ module top (
   tx4,
   tx5,
   tx6,
-  rx2
+  rx2,
+  leds
 )
 ;
 input clk;
@@ -255,26 +197,29 @@ output tx4;
 output tx5;
 output tx6;
 output rx2;
-wire s0_d;
-wire s1_d;
+output [5:0] leds;
 wire rx3_d;
 wire rx4_d;
 wire rx5_d;
 wire rx6_d;
 wire tx2_d;
 wire y_10;
-wire y_5;
-wire y_5_3;
-wire y_5_4;
-wire y_5_5;
+wire tx6_d;
+wire tx5_d;
+wire tx4_d;
+wire tx3_d;
+wire leds_d_1_5;
+wire leds_d_0_5;
+wire [1:0] leds_d_Z_Z;
+wire [5:5] leds_d;
 wire VCC;
 wire GND;
   IBUF s0_ibuf (
-    .O(s0_d),
+    .O(leds_d_Z_Z[0]),
     .I(s0) 
 );
   IBUF s1_ibuf (
-    .O(s1_d),
+    .O(leds_d_Z_Z[1]),
     .I(s1) 
 );
   IBUF rx3_ibuf (
@@ -297,47 +242,72 @@ wire GND;
     .O(tx2_d),
     .I(tx2) 
 );
-  TBUF tx3_s0 (
-    .O(tx3),
-    .I(tx2_d),
-    .OEN(y_5) 
-);
-  TBUF tx4_s0 (
-    .O(tx4),
-    .I(tx2_d),
-    .OEN(y_5_3) 
-);
-  TBUF tx5_s0 (
-    .O(tx5),
-    .I(tx2_d),
-    .OEN(y_5_4) 
-);
-  TBUF tx6_s0 (
-    .O(tx6),
-    .I(tx2_d),
-    .OEN(y_5_5) 
-);
   TBUF rx2_s0 (
     .O(rx2),
     .I(y_10),
     .OEN(GND) 
 );
+  OBUF tx3_obuf (
+    .O(tx3),
+    .I(tx3_d) 
+);
+  OBUF tx4_obuf (
+    .O(tx4),
+    .I(tx4_d) 
+);
+  OBUF tx5_obuf (
+    .O(tx5),
+    .I(tx5_d) 
+);
+  OBUF tx6_obuf (
+    .O(tx6),
+    .I(tx6_d) 
+);
+  OBUF leds_0_obuf (
+    .O(leds[0]),
+    .I(leds_d_0_5) 
+);
+  OBUF leds_1_obuf (
+    .O(leds[1]),
+    .I(leds_d_1_5) 
+);
+  OBUF leds_2_obuf (
+    .O(leds[2]),
+    .I(VCC) 
+);
+  OBUF leds_3_obuf (
+    .O(leds[3]),
+    .I(VCC) 
+);
+  OBUF leds_4_obuf (
+    .O(leds[4]),
+    .I(VCC) 
+);
+  OBUF leds_5_obuf (
+    .O(leds[5]),
+    .I(leds_d[5]) 
+);
   mux_tri mux (
     .rx5_d(rx5_d),
     .rx6_d(rx6_d),
-    .s1_d(s1_d),
     .rx4_d(rx4_d),
     .rx3_d(rx3_d),
-    .s0_d(s0_d),
+    .leds_d_Z_Z(leds_d_Z_Z[1:0]),
     .y_10(y_10)
 );
-  demux_tri dem (
-    .s1_d(s1_d),
-    .s0_d(s0_d),
-    .y_5(y_5),
-    .y_5_0(y_5_3),
-    .y_5_1(y_5_4),
-    .y_5_2(y_5_5)
+  demux dem (
+    .tx2_d(tx2_d),
+    .leds_d_Z_Z(leds_d_Z_Z[1:0]),
+    .tx6_d(tx6_d),
+    .tx5_d(tx5_d),
+    .tx4_d(tx4_d),
+    .tx3_d(tx3_d)
+);
+  leds salidas_led (
+    .leds_d_Z_Z(leds_d_Z_Z[1:0]),
+    .leds_d_0_5(leds_d_0_5),
+    .leds_d_1_5(leds_d_1_5),
+    .leds_d_5(leds_d[5])
 );
   VCC VCC_cZ (
     .V(VCC)
